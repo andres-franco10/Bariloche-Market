@@ -1,0 +1,166 @@
+
+{"productos":
+[ 
+    {
+      "id": 1,
+      "nombre": "Semillas de chía",
+      "descripcion": "Ricas en fibra y omega-3, perfectas para agregar a batidos o yogurt.",
+      "precio": 8.99,
+      "cantidad": 50,
+      "categoria": "semillas",
+      "imagen" : "/img/chia.jpeg"
+    },
+    {
+      "id": 2,
+      "nombre": "Proteína de guisante",
+      "descripcion": "Ideal para personas veganas o vegetarianas que buscan una fuente de proteína de origen vegetal.",
+      "precio": 22.99,
+      "cantidad": 20,
+      "categoria": "proteínas",
+      "imagen" : "/img/guisante.jfif"
+    },
+    {
+      "id": 3,
+      "nombre": "Aceite de coco",
+      "descripcion": "Rico en ácidos grasos saturados, ideal para cocinar a altas temperaturas.",
+      "precio": 12.99,
+      "cantidad": 30,
+      "categoria": "aceites",
+      "imagen" : "/img/aceite-coco.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "Té verde matcha",
+      "descripcion": "Rico en antioxidantes y energizante, ideal para preparar bebidas frías o calientes.",
+      "precio": 14.99,
+      "cantidad": 25,
+      "categoria": "tés",
+      "imagen" : "/img/te-verde.jpg"
+    },
+    {
+      "id": 5,
+      "nombre": "Suplemento de vitamina C",
+      "descripcion": "Ayuda a fortalecer el sistema inmunológico y a prevenir enfermedades.",
+      "precio": 9.99,
+      "cantidad": 40,
+      "categoria": "vitaminas",
+      "imagen" : "/img/vita-c.jpg"
+    },
+    {
+      "id": 6,
+      "nombre": "Harina de avena",
+      "descripcion": "Rica en fibra y proteínas, perfecta para preparar panqueques o galletas saludables.",
+      "precio": 6.99,
+      "cantidad": 35,
+      "categoria": "harinas",
+      "imagen" : "/img/Harina-de-avena.jfif"
+    },
+    {
+      "id": 7,
+      "nombre": "Almendras",
+      "descripcion": "Ricas en grasas saludables y proteínas, ideales para consumir como snack o agregar a ensaladas.",
+      "precio": 14.99,
+      "cantidad": 28,
+      "categoria": "frutos secos",
+      "imagen" : "/img/almendras.jpeg"
+    },
+    {
+      "id": 8,
+      "nombre": "Aceite esencial de lavanda",
+      "descripcion": "Relajante y calmante, ideal para añadir a baños o utilizar en aromaterapia.",
+      "precio": 18.99,
+      "cantidad": 15,
+      "categoria": "aceites esenciales",
+      "imagen" : "/img/Aceite-lavanda.jpg"
+    },
+    {
+      "id": 9,
+      "nombre": "Miel de abeja orgánica",
+      "descripcion": "Endulzante natural y saludable, ideal para agregar a té o utilizar en recetas de repostería.",
+      "precio": 11.99,
+      "cantidad": 20,
+      "categoria": "endulzantes",
+      "imagen" : "/img/Miel.jfif"
+    },
+    {
+        "id": 11,
+        "nombre": "Cúrcuma en polvo",
+        "descripcion": "Antioxidante y antiinflamatorio, ideal para agregar a platos salados o bebidas.",
+        "precio": 7.99,
+        "cantidad": 50,
+        "categoria": "especias",
+        "imagen" : "/img/curcuma.jfif"
+      },
+      {
+        "id": 12,
+        "nombre": "Semillas de girasol",
+        "descripcion": "Ricas en proteínas y grasas saludables, perfectas para agregar a ensaladas o hacer mantequilla de girasol.",
+        "precio": 5.99,
+        "cantidad": 30,
+        "categoria": "semillas",
+        "imagen" : "/img/semillas-d-girasol.jpg"
+      },
+      {
+        "id": 13,
+        "nombre": "Proteína de suero de leche",
+        "descripcion": "Ideal para personas que buscan una fuente de proteína de origen animal.",
+        "precio": 29.99,
+        "cantidad": 15,
+        "categoria": "proteínas",
+        "imagen" : "/img/proteina_de_suero_de_leche.jpg"
+      },
+      {
+        "id": 14,
+        "nombre": "Aceite esencial de menta",
+        "descripcion": "Refrescante y energizante, ideal para añadir a baños o utilizar en aromaterapia.",
+        "precio": 14.99,
+        "cantidad": 20,
+        "categoria": "aceites esenciales",
+        "imagen" : "/img/Aceite-menta.jpg"
+      },
+      {
+        "id": 15,
+        "nombre": "Jengibre fresco",
+        "descripcion": "Antioxidante y antiinflamatorio, perfecto para agregar a bebidas o platos salados.",
+        "precio": 3.99,
+        "cantidad": 40,
+        "categoria": "vegetales",
+        "imagen" : "/img/Jengibre-fresco.jpg"
+      },
+      {
+        "id": 16,
+        "nombre": "Infusión de valeriana",
+        "descripcion": "Relajante y calmante, ideal para tomar antes de dormir o en momentos de estrés.",
+        "precio": 10.99,
+        "cantidad": 25,
+        "categoria": "infusiones",
+        "imagen" : "/img/infusion-de-valeriana.jpg"
+      },
+      {
+        "id": 17,
+        "nombre": "Maca en polvo",
+        "descripcion": "Energizante y afrodisíaco, perfecto para agregar a batidos o bebidas.",
+        "precio": 12.99,
+        "cantidad": 35,
+        "categoria": "superalimentos",
+        "imagen" : "/img/maca-organica-kallpa1-.jpg"
+      },
+      {
+        "id": 18,
+        "nombre": "Aceite de oliva virgen extra",
+        "descripcion": "Rico en grasas saludables y antioxidantes, ideal para consumir en crudo o cocinar a bajas temperaturas.",
+        "precio": 15.99,
+        "cantidad": 30,
+        "categoria": "aceites",
+        "imagen" : "/img/Aceite-de-oliva-virgen-extra-La-Toscana-x500m.jpg"
+      },
+      {
+        "id": 19,
+        "nombre": "Bayas de goji",
+        "descripcion": "Ricas en antioxidantes y vitaminas, perfectas para agregar a batidos o consumir como snack.",
+        "precio": 9.99,
+        "cantidad": 25,
+        "categoria": "frutas deshidratadas",
+        "imagen" : "/img/Bayas-de-goji.jpg"
+      }
+]}
