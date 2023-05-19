@@ -1,7 +1,7 @@
 /* Crear ARRAY de productos. o Un Objetos o varios Objetos en arvicho JSON*/
 
 
-/*leer los datos usando AJAX, utilizando FETCH con asincronismo y promesas. poner controles de errores, try cath */
+/*leer los datos usando AJAX, utilizando FETCH con asincronismo y promesas. poner controles de errores, TRY CATCH Y FINALLY */
 async function loadData() {
   try {
     const response = await fetch("/JSON/data.json");
@@ -12,28 +12,12 @@ async function loadData() {
     const productos = data.productos;
 
 
-    //creo el buscador de productos
-
-    const cardContainer = document.getElementById("cardContainer");
-    const searchInput = document.getElementById("searchInput");
-    let productoBuscado = [];
-
-
-    searchInput.addEventListener("input", (e) => {
-      const value = e.target.value.toLowerCase();
-      productoBuscado.forEach((producto) => {
-        const esVisible =
-          producto.nombre.toLowerCase().includes(value) ||
-          producto.categoria.toLowerCase().includes(value);
-        producto.element.classList.toggle("hide", !esVisible);
-      });
-    });
-
 // creo las cards de los productos y las mapeo.
 
     productoBuscado = productos.map((producto) => {
       const card = document.createElement("div");
       card.classList.add("col");
+
       card.innerHTML = `
        <div class="card"> 
             <div class="card-body card">  
@@ -45,6 +29,7 @@ async function loadData() {
           </div>
         </div>
     `;
+
       cardContainer.appendChild(card);
       return {
         id: producto.id,
@@ -55,6 +40,11 @@ async function loadData() {
       };
     });
 
+    // CATCH
+  } catch (error) {
+    console.error(error);
+  }
+  
 
 // sumo la cantidad de cada producto en 1 si se clikea en agregar al carrito de nuevo
 
@@ -69,37 +59,21 @@ async function loadData() {
         const precioProducto = e.target.getAttribute("data-precio");
 
         actualizarCantidadCarrito(idProducto, nombreProducto,precioProducto, 1);
+
         actualizarIconoCarrito();
+
         mostrarMensaje(nombreProducto);
+
+        mostrarCarrito();
       });
     }
     
 
-  } catch (error) {
-    console.error(error);
-  }
 }
 
-//creo el icono carrito en el html
-window.addEventListener('load', function() {
-  let botonCarrito = document.getElementById("botonIconoCarrito");
-  let iconoCarrito = document.createElement("i");
-  iconoCarrito.classList.add("fa", "badge", "fa-lg");
-  iconoCarrito.innerHTML ="&#xf07a;"
- 
-
-  botonCarrito.appendChild(iconoCarrito);
- 
-  actualizarIconoCarrito();
-});
 
 
-// persisto el carrito en el localStorage
-function actualizarCantidadCarrito(idProducto, nombreProducto, precioProducto, cantidad) {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
-  carrito[idProducto] = { nombre: nombreProducto, precio: precioProducto,cantidad: (carrito[idProducto]?.cantidad || 0) + cantidad };
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-}
+
 
 
 // el numero del icono del carrito es igual al numero de productos que agrego. Pero no es igual a las cantidades de cada producto
@@ -125,6 +99,59 @@ function mostrarMensaje(nombreProducto) {
     document.body.removeChild(mensaje);
   }, 2500);
 }
+
+// persisto el carrito en el localStorage
+function actualizarCantidadCarrito(idProducto, nombreProducto, precioProducto, cantidad) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+  carrito[idProducto] = { nombre: nombreProducto, precio: precioProducto,cantidad: (carrito[idProducto]?.cantidad || 0) + cantidad };
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+const mostrarCarrito = () => {
+  const modalBody = document.querySelector(".modal .modal-body");
+  console.log(modalBody);
+
+  const carrito = JSON.parse(localStorage.getItem("carrito"));
+  console.log(carrito)
+
+
+
+    carrito.forEach((producto) => {
+      const { id, nombre, imagen, cantidad, precio } = producto;
+
+      modalBody.innerHTML += `
+      <div class="modal-contenedor">
+        <div>
+          <img class="img-fluid img-carrito" src="${imagen}" />
+        </div>
+        <p>Producto: ${id}</p>
+        <p>Nombre: ${nombre}</p>
+        <p>Precio: ${precio}</p>
+        <p>Cantidad: ${cantidad}</p>
+        <button class="btn btn-danger">Eliminar Producto</button>
+      </div>
+      `;
+    });
+  }
+
+
+//creo el icono carrito en el html
+window.addEventListener('load', function() {
+  let botonCarrito = document.getElementById("botonIconoCarrito");
+  let iconoCarrito = document.createElement("i");
+  iconoCarrito.classList.add("fa", "badge", "fa-lg");
+  iconoCarrito.innerHTML ="&#xf07a;"
+ 
+
+  botonCarrito.appendChild(iconoCarrito);
+  actualizarIconoCarrito();
+ 
+
+});
+
+
+
+
 
 loadData();
 
