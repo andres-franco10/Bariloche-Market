@@ -70,9 +70,19 @@ async function loadData() {
     
 
 }
+//creo el icono carrito en el html
+window.addEventListener('load', function() {
+  let botonCarrito = document.getElementById("botonIconoCarrito");
+  let iconoCarrito = document.createElement("i");
+  iconoCarrito.classList.add("fa", "badge", "fa-lg");
+  iconoCarrito.innerHTML ="&#xf07a;"
+ 
 
+  botonCarrito.appendChild(iconoCarrito);
+  actualizarIconoCarrito();
+ 
 
-
+});
 
 
 
@@ -111,9 +121,8 @@ const mostrarCarrito = () => {
   const modalBody = document.querySelector(".modal .modal-body");
   console.log(modalBody);
 
-  const carrito = JSON.parse(localStorage.getItem("carrito"));
+  const carrito= JSON.parse(localStorage.getItem("carrito"));
   console.log(carrito)
-
 
 
     carrito.forEach((producto) => {
@@ -132,22 +141,11 @@ const mostrarCarrito = () => {
       </div>
       `;
     });
+    
   }
 
 
-//creo el icono carrito en el html
-window.addEventListener('load', function() {
-  let botonCarrito = document.getElementById("botonIconoCarrito");
-  let iconoCarrito = document.createElement("i");
-  iconoCarrito.classList.add("fa", "badge", "fa-lg");
-  iconoCarrito.innerHTML ="&#xf07a;"
- 
 
-  botonCarrito.appendChild(iconoCarrito);
-  actualizarIconoCarrito();
- 
-
-});
 
 
 
