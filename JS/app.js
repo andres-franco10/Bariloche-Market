@@ -8,7 +8,7 @@
 
 async function loadData() {
   try {
-    const response = await fetch("/JSON/data.json");
+    const response = await fetch("/json/data.json");
     if (!response.ok) {
       throw new Error("No se pudo cargar el archivo de productos.");
     }
@@ -44,12 +44,6 @@ async function loadData() {
       };
     });
 
-    // CATCH
-  } catch (error) {
-    console.error(error);
-  }
-  
-
 // sumo la cantidad de cada producto en 1 si se clikea en agregar al carrito de nuevo
 const botonesAgregarAlCarrito = document.getElementsByClassName("agregarAlCarrito");
 
@@ -67,6 +61,14 @@ for (let i = 0; i < botonesAgregarAlCarrito.length; i++) {
     mostrarMensaje(nombreProducto);
   });
 }
+
+
+    // CATCH
+  } catch (error) {
+    console.error(error);
+  }
+
+
 
 }
 //creo el icono carrito en el html
