@@ -1,6 +1,6 @@
 
 p{
-    color: black;
+    color: rgb(9, 1, 1);
 }
 .thumb-content ::before {
     content: "\f190";

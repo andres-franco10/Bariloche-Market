@@ -8,7 +8,7 @@
 
 async function loadData() {
   try {
-    const response = await fetch("/json/data.json");
+    const response = await fetch("/JSON/data.json");
     if (!response.ok) {
       throw new Error("No se pudo cargar el archivo de productos.");
     }
