@@ -15,6 +15,23 @@ async function loadData() {
     const data = await response.json();
     const productos = data.productos;
 
+        //creo el buscador de productos
+
+        const cardContainer = document.getElementById("cardContainer");
+        const searchInput = document.getElementById("searchInput");
+        let productoBuscado = [];
+    
+    
+        searchInput.addEventListener("input", (e) => {
+          const value = e.target.value.toLowerCase();
+          productoBuscado.forEach((producto) => {
+            const esVisible =
+              producto.nombre.toLowerCase().includes(value) ||
+              producto.categoria.toLowerCase().includes(value);
+            producto.element.classList.toggle("hide", !esVisible);
+          });
+    });
+
 
 // creo las cards de los productos y las mapeo.
 
@@ -68,6 +85,7 @@ for (let i = 0; i < botonesAgregarAlCarrito.length; i++) {
     console.error(error);
   }
 
+  
 
 
 }
@@ -132,37 +150,91 @@ const mostrarCarrito = () => {
 
   const carrito = JSON.parse(localStorage.getItem("carrito"));
 
-  for (var key in carrito) {
-    if (carrito.hasOwnProperty(key)) {
-      const producto = carrito[key]; // Obtén el objeto producto individual
+  if (Object.keys(carrito).length === 0) {
+    // Carrito vacío, mostrar mensaje
+    const mensajeElement = document.createElement("p");
+    mensajeElement.textContent = "¡Aún no has agregado productos al carrito!";
+    mensajeElement.classList.add("text-center");
+    mensajeElement.classList.add("text-primary");
+    mensajeElement.classList.add("parrafo");
 
-      const productoContainer = document.createElement("div");
-      productoContainer.classList.add("modal-contenedor");
-      productoContainer.id = `producto-${key}`;
+    modalBody.appendChild(mensajeElement);
+  } else {
+    // Carrito no vacío, mostrar productos
+    for (const key in carrito) {
+      if (carrito.hasOwnProperty(key)) {
+        const producto = carrito[key]; // Obtener cada producto individualmente
 
-      const nombreElement = document.createElement("p");
-      nombreElement.textContent = producto.nombre;
+        const productoContainer = document.createElement("div");
+        productoContainer.classList.add("modal-contenedor");
+        productoContainer.id = `producto-${key}`;
 
-      const precioElement = document.createElement("p");
-      precioElement.textContent = `Precio: $${producto.precio}`;
+        const nombreElement = document.createElement("p");
+        nombreElement.textContent = producto.nombre;
 
-      const cantidadElement = document.createElement("p");
-      cantidadElement.innerHTML = `Cantidad: <span class="cantidad">${producto.cantidad}</span>`;
+        const precioElement = document.createElement("p");
+        precioElement.textContent = `Precio: $${producto.precio}`;
 
-      const eliminarButton = document.createElement("button");
-      eliminarButton.classList.add("btn", "btn-danger");
-      eliminarButton.textContent = "Eliminar Producto";
+        const cantidadElement = document.createElement("p");
+        cantidadElement.innerHTML = `Cantidad: <span class="cantidad">${producto.cantidad}</span>`;
 
-      productoContainer.appendChild(nombreElement);
-      productoContainer.appendChild(precioElement);
-      productoContainer.appendChild(cantidadElement);
-      productoContainer.appendChild(eliminarButton);
+        const eliminarButton = document.createElement("button");
+        eliminarButton.classList.add("btn", "btn-danger");
+        eliminarButton.textContent = "Eliminar Producto";
 
-      modalBody.appendChild(productoContainer);
+        // Eliminar ese producto del carrito
+        eliminarButton.addEventListener("click", () => {
+          eliminarProducto(key); // Pasar el id como argumento
+        });
+
+        productoContainer.appendChild(nombreElement);
+        productoContainer.appendChild(precioElement);
+        productoContainer.appendChild(cantidadElement);
+        productoContainer.appendChild(eliminarButton);
+
+        modalBody.appendChild(productoContainer);
+      }
     }
   }
 }
 
+
+function eliminarProducto(idProducto) {
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+
+  // Elimina el producto del carrito usando el idProducto proporcionado
+  delete carrito[idProducto];
+
+  // Actualiza el carrito en el localStorage
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // Vuelve a mostrar el carrito actualizado
+  mostrarCarrito();
+  actualizarIconoCarrito();
+}
+
+
+
+
+const vaciarCarrito = () => {
+  // Elimina todos los productos del carrito
+  const carrito = {};
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // Vuelve a mostrar el carrito actualizado
+  mostrarCarrito();
+  actualizarIconoCarrito();
+};
+// Agrego el evento de click al botón "Vaciar carrito"
+const vaciarCarritoButton = document.getElementById("vaciarCarrito");
+vaciarCarritoButton.addEventListener("click", vaciarCarrito);
+
+
+window.addEventListener('load', function() {
+  // ...
+  actualizarIconoCarrito();
+  mostrarCarrito();
+});
 
 loadData();
 
