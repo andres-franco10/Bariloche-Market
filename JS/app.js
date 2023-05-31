@@ -2,6 +2,9 @@
 
 
 /*leer los datos usando AJAX, utilizando FETCH con asincronismo y promesas. poner controles de errores, TRY CATCH Y FINALLY */
+
+
+
 async function loadData() {
   try {
     const response = await fetch("/JSON/data.json");
@@ -47,32 +50,36 @@ async function loadData() {
   
 
 // sumo la cantidad de cada producto en 1 si se clikea en agregar al carrito de nuevo
+const botonesAgregarAlCarrito = document.getElementsByClassName("agregarAlCarrito");
 
-    const botonesAgregarAlCarrito = document.getElementsByClassName("agregarAlCarrito");
+for (let i = 0; i < botonesAgregarAlCarrito.length; i++) {
+  const botonAgregarAlCarrito = botonesAgregarAlCarrito[i];
 
-    for (let i = 0; i < botonesAgregarAlCarrito.length; i++) {
-      const botonAgregarAlCarrito = botonesAgregarAlCarrito[i];
+  botonAgregarAlCarrito.addEventListener("click", (e) => {
+    const idProducto = e.target.getAttribute("data-id");
+    const nombreProducto = e.target.getAttribute("data-nombre");
+    const precioProducto = e.target.getAttribute("data-precio");
 
-      botonAgregarAlCarrito.addEventListener("click", (e) => {
-        const idProducto = e.target.getAttribute("data-id");
-        const nombreProducto = e.target.getAttribute("data-nombre");
-        const precioProducto = e.target.getAttribute("data-precio");
-
-        actualizarCantidadCarrito(idProducto, nombreProducto,precioProducto, 1);
-
-        actualizarIconoCarrito();
-
-        mostrarMensaje(nombreProducto);
-
-        mostrarCarrito();
-      });
-    }
-    
-
+    actualizarCantidadCarrito(idProducto, nombreProducto, precioProducto, 1);
+    mostrarCarrito(); // Actualizar la ventana modal
+    actualizarIconoCarrito();
+    mostrarMensaje(nombreProducto);
+  });
 }
 
+}
+//creo el icono carrito en el html
+window.addEventListener('load', function() {
+  let botonCarrito = document.getElementById("botonIconoCarrito");
+  let iconoCarrito = document.createElement("i");
+  iconoCarrito.classList.add("fa", "badge", "fa-lg");
+  iconoCarrito.innerHTML ="&#xf07a;"
+ 
 
+  botonCarrito.appendChild(iconoCarrito);
+  actualizarIconoCarrito();
 
+});
 
 
 
@@ -99,66 +106,60 @@ function mostrarMensaje(nombreProducto) {
     document.body.removeChild(mensaje);
   }, 2500);
 }
-
-// persisto el carrito en el localStorage
+//PERSISTO EL CArrito ene l localStorage
 function actualizarCantidadCarrito(idProducto, nombreProducto, precioProducto, cantidad) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
-  carrito[idProducto] = { nombre: nombreProducto, precio: precioProducto,cantidad: (carrito[idProducto]?.cantidad || 0) + cantidad };
+  carrito[idProducto] = { nombre: nombreProducto, precio: precioProducto, cantidad: (carrito[idProducto]?.cantidad || 0) + cantidad };
   localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // Actualizar la cantidad en la ventana modal
+  const productoContainer = document.getElementById(`producto-${idProducto}`);
+  if (productoContainer) {
+    const cantidadElement = productoContainer.querySelector(".cantidad");
+    if (cantidadElement) {
+      cantidadElement.textContent = carrito[idProducto].cantidad;
+    }
+  }
 }
+
 
 const mostrarCarrito = () => {
   const modalBody = document.querySelector(".modal .modal-body");
-  console.log(modalBody);
+  modalBody.innerHTML = ""; // Limpiar contenido anterior
 
   const carrito = JSON.parse(localStorage.getItem("carrito"));
-  console.log(carrito)
 
+  for (var key in carrito) {
+    if (carrito.hasOwnProperty(key)) {
+      const producto = carrito[key]; // Obtén el objeto producto individual
 
+      const productoContainer = document.createElement("div");
+      productoContainer.classList.add("modal-contenedor");
+      productoContainer.id = `producto-${key}`;
 
-    carrito.forEach((producto) => {
-      const { id, nombre, imagen, cantidad, precio } = producto;
+      const nombreElement = document.createElement("p");
+      nombreElement.textContent = producto.nombre;
 
-      modalBody.innerHTML += `
-      <div class="modal-contenedor">
-        <div>
-          <img class="img-fluid img-carrito" src="${imagen}" />
-        </div>
-        <p>Producto: ${id}</p>
-        <p>Nombre: ${nombre}</p>
-        <p>Precio: ${precio}</p>
-        <p>Cantidad: ${cantidad}</p>
-        <button class="btn btn-danger">Eliminar Producto</button>
-      </div>
-      `;
-    });
+      const precioElement = document.createElement("p");
+      precioElement.textContent = `Precio: $${producto.precio}`;
+
+      const cantidadElement = document.createElement("p");
+      cantidadElement.innerHTML = `Cantidad: <span class="cantidad">${producto.cantidad}</span>`;
+
+      const eliminarButton = document.createElement("button");
+      eliminarButton.classList.add("btn", "btn-danger");
+      eliminarButton.textContent = "Eliminar Producto";
+
+      productoContainer.appendChild(nombreElement);
+      productoContainer.appendChild(precioElement);
+      productoContainer.appendChild(cantidadElement);
+      productoContainer.appendChild(eliminarButton);
+
+      modalBody.appendChild(productoContainer);
+    }
   }
-
-
-//creo el icono carrito en el html
-window.addEventListener('load', function() {
-  let botonCarrito = document.getElementById("botonIconoCarrito");
-  let iconoCarrito = document.createElement("i");
-  iconoCarrito.classList.add("fa", "badge", "fa-lg");
-  iconoCarrito.innerHTML ="&#xf07a;"
- 
-
-  botonCarrito.appendChild(iconoCarrito);
-  actualizarIconoCarrito();
- 
-
-});
-
-
-
+}
 
 
 loadData();
-
-
-
-
-
-
-
 

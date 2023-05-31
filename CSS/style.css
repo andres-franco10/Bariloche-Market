@@ -1,4 +1,7 @@
 
+p{
+    color: black;
+}
 .thumb-content ::before {
     content: "\f190";
     font-family: FontAwesome;
