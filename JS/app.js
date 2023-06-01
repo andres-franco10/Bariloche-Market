@@ -40,7 +40,7 @@ async function loadData() {
                 <h2>${producto.nombre}</h2>    
                 <p class="card-text">${producto.descripcion}</p>
                 <span>$${producto.precio}</span>
-                <button type="button" class="btn btn-success agregarAlCarrito" data-nombre=" ${producto.nombre} "data-id="${producto.id}" data-precio ="${producto.precio}" >Agregar al carrito</button>
+                <button type="button" class="btn btn-success agregarAlCarrito" data-nombre=" ${producto.nombre} "data-id="${producto.id}" data-precio ="${producto.precio}" data-imagen="${producto.imagen}">Agregar al carrito</button>
           </div>
         </div>
     `;
@@ -51,6 +51,7 @@ async function loadData() {
         nombre: producto.nombre,
         categoria: producto.categoria,
         precio: producto.precio,
+        imagen: producto.imagen,
         element: card,
       };
     });
@@ -66,12 +67,15 @@ async function loadData() {
         const idProducto = e.target.getAttribute("data-id");
         const nombreProducto = e.target.getAttribute("data-nombre");
         const precioProducto = e.target.getAttribute("data-precio");
+        const imagenProducto = e.target.getAttribute("data-imagen")
+        
 
         actualizarCantidadCarrito(
           idProducto,
           nombreProducto,
           precioProducto,
-          1
+          1,
+          imagenProducto
         );
         mostrarCarrito(); // Actualizar la ventana modal
         actualizarIconoCarrito();
@@ -123,13 +127,15 @@ function actualizarCantidadCarrito(
   idProducto,
   nombreProducto,
   precioProducto,
-  cantidad
+  cantidad,
+  imagenProducto
 ) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
   carrito[idProducto] = {
     nombre: nombreProducto,
     precio: precioProducto,
     cantidad: (carrito[idProducto]?.cantidad || 0) + cantidad,
+    imagen : imagenProducto
   };
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
@@ -173,6 +179,12 @@ const mostrarCarrito = () => {
         productoContainer.classList.add("modal-contenedor");
         productoContainer.id = `producto-${key}`;
 
+
+        const divImagenCarrito = document.createElement("div")
+        const imagenElement = document.createElement("img")
+        imagenElement.classList.add("img-carrito")
+        imagenElement.src = producto.imagen
+
         const nombreElement = document.createElement("p");
         nombreElement.textContent = producto.nombre;
 
@@ -195,6 +207,7 @@ const mostrarCarrito = () => {
         total += producto.cantidad * producto.precio;
         precioTotal.innerText = `$${total.toFixed(2)}`; //solo muestra 2 decimales
 
+        productoContainer.appendChild(divImagenCarrito).appendChild(imagenElement)
         productoContainer.appendChild(nombreElement);
         productoContainer.appendChild(precioElement);
         productoContainer.appendChild(cantidadElement);
@@ -233,7 +246,7 @@ const vaciarCarrito = () => {
 const vaciarCarritoButton = document.getElementById("vaciarCarrito");
 vaciarCarritoButton.addEventListener("click", vaciarCarrito);
 
-// Boton de FInalizar COmpra.
+// Botón de FInalizar COmpra.
 const procesarCompra = document.getElementById("procesarCompra");
 
 procesarCompra.addEventListener("click", () => {
