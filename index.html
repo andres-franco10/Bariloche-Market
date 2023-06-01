@@ -1,294 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bariloche Market</title>
-
-                                   <!-- CSS  -->
-
-                                   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-                                   <link rel="stylesheet" href="/CSS/style.css">
-                                   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-                                   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
-                                   <link href='//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
-                                   <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
-
-</head>
-<body>
-  
-
-
-    <div class="span12 text-center font-small">
-           	           	      
-        Sin MÍNIMO de compra. Envíos GRATIS desde $2000 en Bariloche y Dina Huapi.
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <img src="img/Icono-BRC-MARKET.jpg" height="50px" alt="Icono-BRC-MARKET">
-
-<div class="container-xl" >
-
-     
-<!-- Botón para abrir la ventana modal -->
-<button id="botonIconoCarrito" type="button" 
-
-data-bs-toggle="modal"
-data-bs-target="#modal">
-
-</button>
-<span id="contadorCarrito"></span>
-
-
-    <div class="modal" tabindex="-1" role="dialog" id="modal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Carrito</h5>
-            <button
-              type="button"
-              class="close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" id="vaciarCarrito">
-              Vaciar carrito
-            </button>
-            <button type="button" id="procesarCompra" class="btn btn-primary">
-              Continuar compra
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Cerrar
-            </button>
-
-            <span>Precio total:</span>
-            <p class="text-center" id="precioTotal"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://wa.me/+542944912738"> <img src="img/icons8-whatsapp-48.png"  height="25px" alt="icono-whatsapp"> 2944 912738 </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Productos
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Sin TACC</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Veganos</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Felices Las Vacas</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Frutos Secos</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Semillas</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contacto </a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input id="searchInput"  class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-          </form>
-        </div>
-      </nav>
-
-       <!--    ****CARROUSEL***
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100 .carousel-caption" src="img/brcmkt.jpg" alt="First slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>ESTAMOS EN LAS VICTORIAS! </h5>
-                <p>AVENIDA LAS VICTORIAS 464</p>
-              </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" height="238px" src="img/Zapallo.jpg" alt="Second slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>-VOS SOS UN ZAPALLO </h5>
-                <p>-NO!, VOS SOS UN ZAPALLO</p>
-              </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" height="238px" src="img/296797463_149952114362990_1369151427064658705_n.jpg" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>KE SE YO </h5>
-                <p>KE SE YO</p>
-              </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-
-      <div class="card text-bg-dark" width="80%">
-        <img src="img/las vacas.png"  class="card-img" alt="Felices-las-vacas">
-      </div>
-      -->
-
-       <!--                  CARDS DE PRODUCTOS-->
-      <div class="row row-cols-1 row-cols-md-2 g-4" id="cardContainer">
-      </div>
+  <head>
     
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Bariloche Market</title>
 
+                                    <!-- CSS  -->
 
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+      <link rel="stylesheet" href="/CSS/style.css">
+
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
+
+      <link href='//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
       
-      <div class="card text-center">
-        <div class="card-header">
-          ENVIOS GRATIS EN BARILOCHE Y DINAHUAPI
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">PROMOCIONES</h5>
-          <p class="card-text"></p>
-          <button type="button" class="btn btn-success">VER</button>
+      <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 
 
+  </head>
+
+  <body>
+    
+
+      <div class="span12 text-center font-small">
+                                
+          Sin MÍNIMO de compra. Envíos GRATIS desde $2000 en Bariloche y Dina Huapi.
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <img src="img/Icono-BRC-MARKET.jpg" height="50px" alt="Icono-BRC-MARKET">
+
+    <div class="container-xl" >
+
+        
+                                                    <!-- Botón para abrir la ventana modal -->
+    <button id="botonIconoCarrito" type="button" 
+
+    data-bs-toggle="modal"
+    data-bs-target="#modal">
+
+    </button>
+      <span id="contadorCarrito"></span>
+        <div class="modal" tabindex="-1" role="dialog" id="modal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img src="img/Icono-BRC-MARKET.jpg" height="50px" alt="Icono-BRC-MARKET">
+                <h5 class="modal-title">Carrito de compras</h5>
+                <i class="fa badge fa lg"></i>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="vaciarCarrito">
+                  Vaciar carrito
+                </button>
+                <button type="button" id="procesarCompra" class="btn btn-primary">
+                  Finalizar compra
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cerrar
+                </button>
+
+                <span class="precio-total">Total:</span>
+                <p class="text-center" id="precioTotal"></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
 
 
+                                                    <!-- Menu desplegable -->
 
 
-                               <!--FOOTER-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://wa.me/+542944912738"> <img src="img/icons8-whatsapp-48.png"  height="25px" alt="icono-whatsapp"> 2944 912738 </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Productos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Sin TACC</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Veganos</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Felices Las Vacas</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Frutos Secos</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Semillas</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacto </a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input id="searchInput"  class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+      </div>
+    </nav>
 
-<footer id="footer" class="footer-1">
-  <div class="main-footer widgets-dark typo-light">
-  <div class="container">
-  <div class="row">
-  
-    <div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="widget subscribe no-box">
-  <h5 class="widget-title">BARILOCHE MARKET<span></span></h5>
-  <p>Somos los mejores del mundo mundial </p>
-  </div>
-  </div>
-  
-    
-  <div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="widget no-box">
-  <h5 class="widget-title">Productos<span></span></h5>
-  <ul class="thumbnail-widget">
-  <li>
-  <div class="thumb-content"><a href="#.">&nbsp;Frutos Secos</a></div> 
-  </li>
-  <li>
-  <div class="thumb-content"><a href="#.">&nbsp;Harinas</a></div> 
-  </li>
-  <li>
-    <div class="thumb-content"><a href="#.">&nbsp;Sin TACC</a></div> 
-    </li>
-  <li>
-  </ul>
-  </div>
-  </div>
-  
-    
-  
+    <!--    ****CARROUSEL***
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100 .carousel-caption" src="img/brcmkt.jpg" alt="First slide">
+          <div class="carousel-caption d-none d-md-block">
+              <h5>ESTAMOS EN LAS VICTORIAS! </h5>
+              <p>AVENIDA LAS VICTORIAS 464</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" height="238px" src="img/Zapallo.jpg" alt="Second slide">
+          <div class="carousel-caption d-none d-md-block">
+              <h5>-VOS SOS UN ZAPALLO </h5>
+              <p>-NO!, VOS SOS UN ZAPALLO</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" height="238px" src="img/296797463_149952114362990_1369151427064658705_n.jpg" alt="Third slide">
+          <div class="carousel-caption d-none d-md-block">
+              <h5>KE SE YO </h5>
+              <p>KE SE YO</p>
+            </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <div class="card text-bg-dark" width="80%">
+      <img src="img/las vacas.png"  class="card-img" alt="Felices-las-vacas">
+    </div>
+    -->
+
+                                  <!--CARDS DE PRODUCTOS-->
+                                  
+    <div class="row row-cols-1 row-cols-md-2 g-4" id="cardContainer">
+    </div>
+
+
+                                  <!--Promociones previo al footer-->
+
+    <div class="card text-center">
+      <div class="card-header">
+        ENVIOS GRATIS EN BARILOCHE Y DINAHUAPI
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">PROMOCIONES</h5>
+        <p class="card-text"></p>
+        <button type="button" class="btn btn-success">VER</button>
+
+
+      </div>
+    </div>
+
+
+
+                                  <!--FOOTER-->
+
+    <footer id="footer" class="footer-1">
+      <div class="main-footer widgets-dark typo-light">
+      <div class="container">
+      <div class="row">
+      
         <div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="widget no-box">
-  <h5 class="widget-title">Seguinos<span></span></h5>
-              <a href="https://www.facebook.com/profile.php?id=100083046355727" target="_blank"> <i class="fa fa-facebook"> </i> </a>
-              <a href="https://www.instagram.com/brcmarketok/" target="_blank"> <i class="fa fa-instagram"> </i> </a>
-  </div>
-  </div>
-  <br>
-    <br>
-  
-  
-  <div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="widget no-box">
-  <h5 class="widget-title">Contacto<span></span></h5>
-  <a> <i class="fa"> <img src="/img/gmail.png" height="14px" alt="gmail"> </i> <a href="mailto:Bariloche.market@gmail.com"> Bariloche.market@gmail.com </a>
-  <br>
-  <i class="fa"><img src="/img/map.png" alt="" height="14px"></i> <a href="https://goo.gl/maps/AdbZALBwHKRHeYB4A"> Av. Las Victoria 464, Bariloche, Argentina.</a> 
-  <br>
-  <a href="https://wa.me/542944912738"> <i class="fa fa-whatsapp"> </i> 2944-912-738 </a>
-  <br>
+      <div class="widget subscribe no-box">
+      <h5 class="widget-title">BARILOCHE MARKET<span></span></h5>
+      <p>Somos los mejores del mundo mundial </p>
+      </div>
+      </div>
+      
+        
+      <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="widget no-box">
+      <h5 class="widget-title">Productos<span></span></h5>
+      <ul class="thumbnail-widget">
+      <li>
+      <div class="thumb-content"><a href="#.">&nbsp;Frutos Secos</a></div> 
+      </li>
+      <li>
+      <div class="thumb-content"><a href="#.">&nbsp;Harinas</a></div> 
+      </li>
+      <li>
+        <div class="thumb-content"><a href="#.">&nbsp;Sin TACC</a></div> 
+        </li>
+      <li>
+      </ul>
+      </div>
+      </div>
+      
+        
+      
+            <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="widget no-box">
+      <h5 class="widget-title">Seguinos<span></span></h5>
+                  <a href="https://www.facebook.com/profile.php?id=100083046355727" target="_blank"> <i class="fa fa-facebook"> </i> </a>
+                  <a href="https://www.instagram.com/brcmarketok/" target="_blank"> <i class="fa fa-instagram"> </i> </a>
+      </div>
+      </div>
+      <br>
+        <br>
+      
+      
+      <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="widget no-box">
+      <h5 class="widget-title">Contacto<span></span></h5>
+      <a> <i class="fa"> <img src="/img/gmail.png" height="14px" alt="gmail"> </i> <a href="mailto:Bariloche.market@gmail.com"> Bariloche.market@gmail.com </a>
+      <br>
+      <i class="fa"><img src="/img/map.png" alt="" height="14px"></i> <a href="https://goo.gl/maps/AdbZALBwHKRHeYB4A"> Av. Las Victoria 464, Bariloche, Argentina.</a> 
+      <br>
+      <a href="https://wa.me/542944912738"> <i class="fa fa-whatsapp"> </i> 2944-912-738 </a>
+      <br>
 
 
-              <p>Suscribite a nuestro Newsletter mensual para recibir promociones y recetas!</p>
-    <div class="emailfield">
-  <input type="text" name="email" value="Email">
-  <input name="uri" type="hidden" value="arabiantheme">
-  <input name="loc" type="hidden" value="en_US">
-  <input class="submitbutton ripplelink" type="submit" value="Suscribirse">
-  </form>  
-  </div>
-  </div>
-  
-  </div>
-  </div>
-  </div>
-    
-  <div class="footer-copyright">
-  <div class="container">
-  <div class="row">
-  <div class="col-md-12 text-center">
-  <p>Copyright Andres Franco © 2022. All rights reserved.</p>
-  </div>
-  </div>
-  </div>
+                  <p>Suscribite a nuestro Newsletter mensual para recibir promociones y recetas!</p>
+        <div class="emailfield">
+      <input type="text" name="email" value="Email">
+      <input name="uri" type="hidden" value="arabiantheme">
+      <input name="loc" type="hidden" value="en_US">
+      <input class="submitbutton ripplelink" type="submit" value="Suscribirse">
+      </form>  
+      </div>
+      </div>
+      
+      </div>
+      </div>
+      </div>
+        
+      <div class="footer-copyright">
+      <div class="container">
+      <div class="row">
+      <div class="col-md-12 text-center">
+      <p>Copyright Andres Franco © 2022. All rights reserved.</p>
+      </div>
+      </div>
+      </div>
 
 
-                                    <!--SCRIPTS-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                                        <!--SCRIPTS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-  <script src="/JS/bootstrap.bundle.min.js"></script>
-  
-  <script src="/JS/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-</body>
+    <script src="/JS/bootstrap.bundle.min.js"></script>
+      
+    <script src="/JS/app.js"></script>
 
-
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
+  </body>
 
 </html>

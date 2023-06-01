@@ -1,5 +1,3 @@
-
-
 .modal-contenedor{
     display: flex;
     align-items: center;
@@ -16,6 +14,23 @@
     font-size: bold;
     font-weight: 600;
 }
+
+.modal-title{
+    font-size:25px;
+    color: #050606;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+
+}
+
+.precio-total {
+    color: #0c0d0b;
+    font-weight: bold;
+}
+
 
 a{
     cursor: pointer;
